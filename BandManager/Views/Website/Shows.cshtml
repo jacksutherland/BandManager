@@ -1,0 +1,22 @@
+﻿@model BandManager.Controllers.ShowViewData
+@{
+    ViewBag.Title = "Shows";
+}
+
+<h1>Upcoming Shows</h1>
+
+<ul class="shows">
+    @foreach (var item in Model.UpcomingShows)
+    {
+        @Html.Partial("_Show", item)
+    }
+</ul>
+
+<h1 class="margin-top15">Past Shows</h1>
+
+<ul class="shows">
+    @foreach (var item in Model.PastShows)
+    {
+        @Html.Partial("_Show", item)
+    }
+</ul>

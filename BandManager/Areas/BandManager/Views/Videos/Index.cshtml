@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BandManager.Models.Video>
+
+@{
+    ViewBag.Title = "Videos";
+}
+
+@section DocumentReady {
+    new BandManagerUI().loadSortables(".sortable", ".handle", "@Url.Action("UpdatePosition")");    
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "button" })
+</p>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Video Type
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="sortable">
+        @foreach (var item in Model) {
+            <tr id="@item.ID">
+                <td class="handle">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="handle">
+                    @if (item.VideoHtml.Contains("youtube"))
+                    {
+                        <text>You Tube</text>
+                    }
+                    else if (item.VideoHtml.Contains("vimeo"))
+                    {
+                        <text>Vimeo</text>
+                    }
+                    else
+                    {
+                        <text>Unknown</text>
+                    }
+                </td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "button" })</td>
+                <td>
+                    @using (Html.BeginForm("Delete", "Videos", FormMethod.Post))
+                    {
+                        @Html.Hidden("id", item.ID)
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this item?');" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

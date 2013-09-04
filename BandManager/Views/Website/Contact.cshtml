@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="tilt-left">Contact Us</h1>
+
+      <div class="feature-box">
+        <h5>You can find us online at:</h5>
+        <ul>
+          @foreach (var item in Model.Links)
+          {
+              <li><a href="@item.Url">@item.Name</a></li>
+          }
+        </ul>
+      </div>
+
+      <form id="sendmail" action="sendmail.php" class="contact block">
+        <h5>Or send us a message:</h5>
+        <div>
+          <label>Name</label>
+          <input id="name" type="text" />
+        </div>
+        <div>
+          <label>Email</label>
+          <input id="email" type="text" />
+        </div>
+        <div>
+          <label>Phone</label>
+          <input id="phone" type="text" />
+        </div>
+        <div>
+          <label>Reason for Contacting Us</label>
+          <select id="subject">
+            <option>General Inquiry</option>
+            <option>Purchase tickets to an upcoming show</option>
+            <option>I'd like to book Rando Tribe</option>
+          </select>
+        </div>
+        <div>
+          <label>Message</label>
+          <textarea id="message"></textarea>
+        </div>
+        <div>
+          <input id="btnsend" type="button" value="Send Message" />
+          <span class="error"></span>
+        </div>
+      </form>

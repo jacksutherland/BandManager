@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <div class="slideshow left">
+        <img src="@Url.Content("~/content/images/photos/slide1.jpg")" />
+        <img src="@Url.Content("~/content/images/photos/slide4.jpg")" />
+        <img src="@Url.Content("~/content/images/photos/slide5.jpg")" />
+        <img src="@Url.Content("~/content/images/photos/slide3.jpg")" />
+        <img src="@Url.Content("~/content/images/photos/slide2.jpg")" />
+    </div>
+    <div class="music-player right">
+        <div class="widget_iframe" style="display:inline-block;width:100%;height:348px;margin:0;padding:0;border:0;">
+            <iframe class="widget_iframe" src="@string.Format("http://www.reverbnation.com/widget_code/html_widget/artist_{0}?widget_id=50&posted_by=artist_{0}&pwc[design]=default&pwc[background_color]=%23333333&pwc[included_songs]=1&pwc[photo]=0&pwc[size]=fit", Model.ReverbNationID)" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+            <div class="footer_branding" style="margin-top:-5px;font-size:10px;font-family:Arial;"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    </div>
+
+    <div class="block">
+    <p>
+        @Model.Description
+        @Html.ActionLink("Download Pig Latin, our entire CD", "Media", null, null, null, "download", null, null)
+    </p>
+</div>
+
+<h2>Love is an action we can all take... We'll go first!</h2>

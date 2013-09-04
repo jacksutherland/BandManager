@@ -1,0 +1,39 @@
+﻿@model BandManager.Models.Show
+
+@{
+    ViewBag.Title = "Show Details";
+}
+
+@section MetaTags {
+    <meta property="og:title" content="@string.Format("Rando Tribe - {0}", Model.VenueName)" />
+    <meta property="og:description" content="@string.Format("Rando Tribe - {0}", Model.Description)" />
+}
+
+<div class="block">
+    
+    <div class="left half-width">
+        <h5>@string.Format("{0} - {1}", Model.Date.ToShortDateString(), Model.VenueName)</h5>
+        <p>@Html.DisplayFor(model => model.Description)</p>
+        @if (!string.IsNullOrEmpty(Model.VenueWebsite))
+        {    
+            <p><a href="@Model.VenueWebsite">Visit @Model.VenueName Website</a></p>
+        }
+        <p>@Html.DisplayFor(model => model.VenueLocation)</p>
+        <div>@Html.Raw(Model.MapHtml)</div>
+        <p>
+            @Html.ActionLink("View all shows", "Shows")
+        </p>
+    </div>
+    <div class="right half-width">
+        @if (!string.IsNullOrEmpty(Model.PhotoUrl))
+        {              
+            <img src="@Url.Content(string.Format("~/content/images/shows/{0}", Model.PhotoUrl))" />              
+        }
+        else
+        {
+            <img src="@Url.Content("~/content/images/shows/generic-flier.jpg")" />
+        }
+    </div>
+    <div class="clear"></div>
+</div>
+

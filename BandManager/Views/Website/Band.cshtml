@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Band";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="tilt-more">Meet the Band</h1>
+
+<div class="feature-box">
+<p>
+    @ViewBag.BandBio
+</p>
+<div class="margin-top15">
+    <strong>Members:
+        @foreach (var item in Model)
+        {
+            <a href="#@item.Name.Replace(' ', '-')">@item.Name</a>
+        }
+    </strong>
+</div>
+</div>
+
+<ul class="band">
+    @foreach (var item in Model)
+    {
+        <li class="alternate">
+          <div class="float1 half-width">
+              @if (!string.IsNullOrEmpty(@item.PhotoUrl))
+              {
+                <img src="@Url.Content(string.Format("~/content/images/photos/{0}", @item.PhotoUrl))" />
+              }
+          </div>
+          <div id="@item.Name.Replace(' ', '-')" class="float2 half-width block">
+            <h5>@item.Name - @item.Instruments</h5>
+            <p>@item.Bio</p>
+            @if (!string.IsNullOrEmpty(@item.Gear))
+            {
+                <h6>@item.Name.Split(' ')[0]'s Gear</h6>
+                <p>@item.Gear</p>
+            }
+          </div>
+          <div class="clear"></div>
+        </li>
+    }
+</ul>
+

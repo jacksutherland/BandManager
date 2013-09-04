@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Band Manager";
+}
+
+<h2>Welcome to @Model.Name's Band Manager</h2>
+@if(!Request.IsAuthenticated)
+{
+    <h3>Please @Html.ActionLink("log on", "LogOn", "Account") to continue</h3>
+}
+
+@Html.ActionLink((string)string.Format("open {0}", Model.WebsiteUrl), "Index", new { area = "", controller = "Website" })
+
+<p>
+    @Model.Description
+</p>

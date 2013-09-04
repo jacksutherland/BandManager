@@ -1,0 +1,49 @@
+﻿@model BandManager.Models.Member
+
+<fieldset>
+    <legend>Member</legend>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Name)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    <div class="editor-label">
+        <label>Upload a photo or <a href="#">click here to select one</a></label>
+    </div>
+    <div class="editor-field">
+        <input type="file" name="photo" />
+        @Html.ValidationMessageFor(model => model.PhotoUrl)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Instruments)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Instruments)
+        @Html.ValidationMessageFor(model => model.Instruments)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Bio)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Bio)
+        @Html.ValidationMessageFor(model => model.Bio)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Gear)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Gear)
+        @Html.ValidationMessageFor(model => model.Gear)
+    </div>
+
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+</fieldset>

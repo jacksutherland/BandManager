@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="http://www.southtunnel.com/favicon.ico" type="image/ico" />
+    <link href="@Url.Content("~/Content/bandmanager.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.20.min.js")" type="text/javascript"></script>    
+    <script src="@Url.Content("~/Scripts/bandmanager.js")" type="text/javascript"></script>
+    @RenderSection("JavaScript", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            @RenderSection("DocumentReady", required: false)
+        });
+    </script>
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="title">
+                <h1>Band Manager</h1>
+            </div>
+            <div id="logindisplay">
+                @Html.Partial("_LogOnPartial")                
+            </div>
+            <div id="menucontainer">
+                @if(Request.IsAuthenticated) {                
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Profile", "Edit", "Profile")</li>
+                        <li>@Html.ActionLink("Members", "Index", "Members")</li>
+                        <li>@Html.ActionLink("Videos", "Index", "Videos")</li>
+                        <li>@Html.ActionLink("Shows", "Index", "Shows")</li>
+                    </ul>                
+                }
+            </div>
+        </div>
+        <div id="main">
+            @RenderBody()
+        </div>
+        <div id="footer">
+            Band Manager was created by <a href="http://www.southtunnel.com">SouthTunnel</a>
+        </div>
+    </div>
+</body>
+</html>

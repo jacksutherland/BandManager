@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+      <title>Rando Tribe - Official Website</title>
+      <meta name = "viewport" content = "user-scalable=yes, initial-scale=0.75, maximum-scale=0.75, width=device-width">
+      <meta property="og:site_name" content="Rando Tribe Official Website"/>
+      <meta property="og:image" content="http://www.randotribe.com/Content/images/assets/fb-preview.jpg" />
+      @RenderSection("MetaTags", required: false)
+      <link rel="icon" href="favicon.ico" type="image/ico" />
+      <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+      <link href="@Url.Content("~/Content/website.css")" rel="stylesheet" type="text/css" />
+      <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+      <script src="@Url.Content("~/Scripts/website.js")" type="text/javascript"></script>
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-39084338-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function () {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+      </script>
+    </head>
+
+    <body class="home">
+        <div id="header">
+            <a class="logo" href="/"></a>
+            <div class="nav">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index")</li>
+                    <li>@Html.ActionLink("Shows", "Shows")</li>
+                    <li>@Html.ActionLink("Media", "Media")</li>
+                    <li>@Html.ActionLink("Band", "Band")</li>
+                    <li>@Html.ActionLink("Contact / Booking", "Contact")</li>
+                </ul>
+            </div>
+        </div>
+        <div id="main-container">
+            @RenderBody()
+        </div>
+        <div id="footer">
+            <div class="nav">
+                <ul>
+                    <li>@Html.ActionLink("Shows", "Shows")</li>
+                    <li>@Html.ActionLink("Media", "Media")</li>
+                    <li>@Html.ActionLink("Download our album", "Media", null, null, null, "download", null, null)</li>
+                    <li>@Html.ActionLink("Band", "Band")</li>
+                    <li>@Html.ActionLink("Contact / Booking", "Contact")</li>
+                </ul>
+            </div>
+            <a class="southtunnel" href="http://www.southtunnel.com">website by Southtunnel</a>
+        </div>
+    </body>
+
+</html>

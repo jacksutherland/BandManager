@@ -1,0 +1,22 @@
+﻿@using System.Text.RegularExpressions;
+
+<li class="block">
+    <h5>@Html.ActionLink(string.Format("{0} - {1}", (string)Model.Date.ToShortDateString(), (string)Model.VenueName), "ShowDetails", new { id = Model.ID, slug = Regex.Replace(Model.VenueName, "[^\\w]", "-") })</h5>
+    <div class="left half-width">
+    <p>@Model.Description</p>
+    <p>@Model.VenueLocation</p>
+    @Html.Raw(Model.MapHtml)
+    </div>
+    <div class="right half-width">
+        @if (string.IsNullOrEmpty(Model.PhotoUrl))
+        {   
+            <img src="@Url.Content("~/content/images/shows/generic-flier.jpg")" />
+                  
+        }
+        else
+        {
+            <img src="@Url.Content(string.Format("~/content/images/shows/{0}", Model.PhotoUrl))" />                   
+        }
+    </div>
+    <div class="clear"></div>
+</li>
